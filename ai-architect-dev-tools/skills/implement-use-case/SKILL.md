@@ -22,6 +22,7 @@ Create a structured implementation plan for the use case specified in $ARGUMENTS
 - Write implementation code during this skill — the output is a plan document only
 - Mark plan checkboxes as done during planning — they start unchecked
 - Proceed if `docs/use_cases/$ARGUMENTS.md` does not exist — stop and report the missing file
+- Propose tasks that introduce new UI components or custom styling when `docs/guidelines.md` mandates existing components or a styling approach — if a deviation seems necessary, record it under Open Questions & Risks instead
 
 ## Workflow
 
@@ -45,6 +46,7 @@ Read these four documents. If any is missing, note it — the plan will flag it,
 2. `docs/requirements.md` — requirements catalog (FR-XXX, NFR-XXX, C-XXX tables). Note if absent.
 3. `docs/use_cases.md` — use case diagram (to see related UCs and actor relationships). Note if absent.
 4. `docs/entity_model.md` — entity model (to understand the data structures involved). Note if absent.
+5. `docs/guidelines.md` — implementation guidelines (UI component inventory, styling rules, project structure, naming conventions). These rules are **binding** for the plan's tasks. If absent, note it in the plan and recommend creating it with the `guidelines` skill (`/ai-guidelines`).
 
 Mark this todo done.
 
@@ -189,9 +191,21 @@ What is already implemented (based on codebase scan and user input):
 
 ---
 
+## Implementation Guidelines
+
+Binding rules from `docs/guidelines.md` that apply to this use case — implementation must comply:
+
+- **UI components:** [which existing project/library components to use for the UI in this use case — name them. Building new components or adding custom styling is not allowed unless listed under Open Questions & Risks.]
+- **Styling:** [styling approach and design tokens to use; forbidden practices]
+- **Structure & naming:** [where new files belong; naming conventions to follow]
+
+[If `docs/guidelines.md` does not exist: "No `docs/guidelines.md` found — create one with `/ai-guidelines` to make implementation rules explicit."]
+
+---
+
 ## Implementation Tasks
 
-Ordered checklist — work through these in sequence; earlier tasks often unblock later ones.
+Ordered checklist — work through these in sequence; earlier tasks often unblock later ones. Every task must comply with the Implementation Guidelines above; UI tasks name the existing components they use.
 
 - [ ] 1. [First task — typically the data layer or foundational piece]
 - [ ] 2. [Second task]
@@ -230,6 +244,7 @@ Verify before finishing:
 - [ ] At least one NFR was evaluated (even if the answer is "not applicable")
 - [ ] Every missing piece in the Missing Pieces table maps to at least one requirement ID
 - [ ] Implementation Tasks are numbered and ordered (foundational work first)
+- [ ] Implementation Tasks comply with `docs/guidelines.md`: UI tasks name the existing components to use, and no task introduces new components or custom styling without an entry under Open Questions & Risks (or the guidelines file is absent and noted in the plan)
 - [ ] No task is vague — each describes a concrete deliverable
 - [ ] Plan was written to `docs/implementation/$ARGUMENTS/plan.md`
 - [ ] All TodoWrite tasks are marked done

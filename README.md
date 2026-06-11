@@ -17,7 +17,8 @@ The marketplace contains three plugins:
   Works with any tech stack.
 - **ai-architect-testing** — Testing toolkit for React projects (project-level testing concept, Playwright E2E
   tests, Vitest unit tests including architecture/layer-boundary checks, manual test plans).
-- **ai-architect-dev-tools** — Developer workflow tools (conventional commits, use case implementation plans).
+- **ai-architect-dev-tools** — Developer workflow tools (conventional commits, project implementation guidelines,
+  use case implementation plans).
 
 Skills follow a sequential software development workflow:
 
@@ -25,7 +26,7 @@ Skills follow a sequential software development workflow:
 | -------------------------- | ------------------ | -------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------- |
 | **ai-architect-core**      | `/ai-requirements` | `/ai-entity-model`<br>`/ai-use-case-diagram` | `/ai-use-case-spec`                      |                                                            |
 | **ai-architect-testing**   |                    | `/ai-testing-concept`                        |                                          | `/ai-playwright-test`<br>`/ai-vitest`<br>`/ai-manual-test` |
-| **ai-architect-dev-tools** | `/ai-commit`       | `/ai-commit`                                 | `/ai-implement-use-case`<br>`/ai-commit` | `/ai-commit`                                               |
+| **ai-architect-dev-tools** | `/ai-commit`       | `/ai-guidelines`<br>`/ai-commit`             | `/ai-implement-use-case`<br>`/ai-commit` | `/ai-commit`                                               |
 
 ## Installation
 
@@ -117,15 +118,16 @@ automated E2E tests, unit tests (including architecture/layer-boundary checks), 
 
 ### ai-architect-dev-tools
 
-Developer workflow tools that streamline day-to-day implementation work — from planning a use case to crafting a
-conventional commit — through guided interaction.
+Developer workflow tools that streamline day-to-day implementation work — from documenting implementation
+guidelines and planning a use case to crafting a conventional commit — through guided interaction.
 
 #### Skills & Commands
 
-| Command                  | Skill                                        | Description                                                                                         |
-| ------------------------ | -------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `/ai-implement-use-case` | `/ai-architect-dev-tools:implement-use-case` | Creates a structured implementation plan for a use case with traceability and ordered tasks         |
-| `/ai-commit`             | `/ai-architect-dev-tools:commit`             | Creates conventional commits by analyzing changes, asking about type/scope, and generating messages |
+| Command                  | Skill                                        | Description                                                                                              |
+| ------------------------ | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `/ai-guidelines`         | `/ai-architect-dev-tools:guidelines`         | Creates a binding `docs/guidelines.md` documenting UI component reuse, styling rules, and conventions    |
+| `/ai-implement-use-case` | `/ai-architect-dev-tools:implement-use-case` | Creates a structured implementation plan for a use case with traceability, guidelines, and ordered tasks |
+| `/ai-commit`             | `/ai-architect-dev-tools:commit`             | Creates conventional commits by analyzing changes, asking about type/scope, and generating messages      |
 
 ## Using Skills
 
