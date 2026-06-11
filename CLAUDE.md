@@ -20,10 +20,11 @@ This is a **Claude Code plugin marketplace** called `liitu-ai-architect-marketpl
 The repo has four layers:
 
 - **Root level** — marketplace configuration (`.claude-plugin/marketplace.json`)
-- **`ai-architect-core/`** — the core plugin, containing its own `.claude-plugin/plugin.json`, `.mcp.json`,
-  `skills/`, and `commands/` directories
-- **`ai-architect-testing/`** — the testing plugin, containing its own `.claude-plugin/plugin.json`, `skills/`,
-  and `commands/` directories
+- **`ai-architect-core/`** — the core plugin, containing its own `.claude-plugin/plugin.json`, `skills/`, and
+  `commands/` directories
+- **`ai-architect-testing/`** — the testing plugin, containing its own `.claude-plugin/plugin.json`, `.mcp.json`
+  (playwright, browser automation via `@playwright/mcp` for debugging E2E tests), `skills/`, and `commands/`
+  directories
 - **`ai-architect-dev-tools/`** — the dev tools plugin, containing its own `.claude-plugin/plugin.json`,
   `.mcp.json` (context7, used by the `guidelines` skill for library documentation lookup), `skills/`, and
   `commands/` directories
@@ -54,10 +55,11 @@ All skills follow these patterns:
 - **Workflow**: Skills use TodoWrite for task tracking and follow numbered step-by-step workflows.
 - **Output**: Each skill writes to a specific file in `docs/` (e.g., `docs/requirements.md`,
   `docs/entity_model.md`, `docs/use_cases.md`, `docs/use_cases/{name}.md`, `docs/guidelines.md`,
-  `docs/implementation/{uc}/plan.md`). The `testing-concept` skill is the exception and writes `TESTING.md` at
-  the project root.
+  `docs/implementation/{uc}/plan.md`, `docs/test-plans/{feature-name}.md`). The `testing-concept` skill is the
+  exception and writes `TESTING.md` at the project root.
 - **Quality checks**: Skills include validation checklists at the end of their workflows.
-- **$ARGUMENTS**: Used for user-provided input (e.g., the hello skill greets `$ARGUMENTS` by name).
+- **$ARGUMENTS**: Used for user-provided input (e.g., the `use-case-spec` skill receives the use case to
+  document via `$ARGUMENTS`).
 
 ## Command Authoring Conventions
 
