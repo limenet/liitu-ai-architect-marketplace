@@ -183,6 +183,6 @@ Every test plan ends with a summary:
 | TC-003    | Order sync after reconnect     | High     |        |
 
 **Overall Result:** ☐ Pass ☐ Fail
-**Tester Signature:** ********\_********
-**Date:** ********\_********
+**Tester Signature:** **\*\*\*\***\_**\*\*\*\***
+**Date:** **\*\*\*\***\_**\*\*\*\***
 ```

@@ -34,7 +34,7 @@ Define what the system should do. Always use the user story format:
 **Format:** As a [role], I want [goal] so that [benefit].
 
 | ID     | Title        | User Story                                                                                | Priority | Status |
-|--------|--------------|-------------------------------------------------------------------------------------------|----------|--------|
+| ------ | ------------ | ----------------------------------------------------------------------------------------- | -------- | ------ |
 | FR-001 | Create Task  | As a project manager, I want to create tasks so that I can track work items.              | High     | Open   |
 | FR-002 | Assign Task  | As a project manager, I want to assign tasks to team members so that work is distributed. | High     | Open   |
 | FR-003 | Filter Tasks | As a team member, I want to filter tasks by status so that I can focus on relevant items. | Medium   | Open   |
@@ -44,7 +44,7 @@ Define what the system should do. Always use the user story format:
 Define quality attributes. Must be measurable.
 
 | ID      | Title            | Requirement                                                   | Category     | Priority | Status |
-|---------|------------------|---------------------------------------------------------------|--------------|----------|--------|
+| ------- | ---------------- | ------------------------------------------------------------- | ------------ | -------- | ------ |
 | NFR-001 | Response Time    | All page loads must complete within 2 seconds.                | Performance  | High     | Open   |
 | NFR-002 | Availability     | System must maintain 99.9% uptime during business hours.      | Availability | High     | Open   |
 | NFR-003 | Concurrent Users | System must support 100 concurrent users without degradation. | Scalability  | Medium   | Open   |
@@ -55,7 +55,7 @@ Define quality attributes. Must be measurable.
 Define limitations and boundaries imposed on the solution.
 
 | ID    | Title             | Constraint                                                       | Category  | Priority | Status |
-|-------|-------------------|------------------------------------------------------------------|-----------|----------|--------|
+| ----- | ----------------- | ---------------------------------------------------------------- | --------- | -------- | ------ |
 | C-001 | Runtime Platform  | Backend must run on Java 21 LTS.                                 | Technical | High     | Open   |
 | C-002 | Database Platform | System must use PostgreSQL 16.                                   | Technical | High     | Open   |
 | C-003 | Browser Support   | UI must support Chrome, Firefox, and Safari (latest 2 versions). | Technical | High     | Open   |
@@ -72,7 +72,7 @@ categories.
 Every requirement must pass these checks before finalizing:
 
 | Check       | Rule                                 | Bad Example                          | Good Example                  |
-|-------------|--------------------------------------|--------------------------------------|-------------------------------|
+| ----------- | ------------------------------------ | ------------------------------------ | ----------------------------- |
 | Measurable  | NFRs must have a number or threshold | "System should be fast"              | "Pages load within 2 seconds" |
 | Singular    | One requirement per row              | "System must log in and export data" | Split into FR-001 and FR-002  |
 | Unambiguous | No subjective terms                  | "User-friendly interface"            | "WCAG 2.1 AA compliant"       |
@@ -94,19 +94,19 @@ Every requirement must pass these checks before finalizing:
 2. Use TodoWrite to create tasks for each requirement type
 3. Write the document header
 4. For functional requirements:
-    - Identify user roles
-    - Define user stories with clear goals and benefits
-    - Assign priorities based on business value
+   - Identify user roles
+   - Define user stories with clear goals and benefits
+   - Assign priorities based on business value
 5. For non-functional requirements:
-    - Define measurable quality attributes
-    - Categorize by NFR type
-    - Ensure requirements are testable
+   - Define measurable quality attributes
+   - Categorize by NFR type
+   - Ensure requirements are testable
 6. For constraints:
-    - Document technical and business limitations
-    - Categorize by constraint type
+   - Document technical and business limitations
+   - Categorize by constraint type
 7. Validate: run every requirement against the quality checks table above
-    - No duplicate IDs across all tables
-    - All Status columns filled
-    - All user stories follow "As a [role], I want [goal] so that [benefit]"
-    - All NFRs contain a measurable threshold
+   - No duplicate IDs across all tables
+   - All Status columns filled
+   - All user stories follow "As a [role], I want [goal] so that [benefit]"
+   - All NFRs contain a measurable threshold
 8. Mark todos complete

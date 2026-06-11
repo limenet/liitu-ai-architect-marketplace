@@ -1,3 +1,4 @@
+import React from "react";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -17,8 +18,6 @@ function Counter({ initial = 0 }: { initial?: number }) {
     </div>
   );
 }
-
-import React from "react";
 
 describe("Counter", () => {
   it("renders with initial value", () => {
