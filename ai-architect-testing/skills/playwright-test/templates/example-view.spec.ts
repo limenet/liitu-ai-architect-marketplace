@@ -8,9 +8,8 @@ test.describe("Example View", () => {
   test.describe("Table Display", () => {
     test("shows data on page load", async ({ page }) => {
       const rows = page.getByRole("row");
-      // First row is header, so expect more than 1
-      await expect(rows).toHaveCount(/.+/);
-      expect(await rows.count()).toBeGreaterThan(1);
+      // First row is header, so expect at least one data row after it
+      await expect(rows.nth(1)).toBeVisible();
     });
 
     test("has expected column headers", async ({ page }) => {
