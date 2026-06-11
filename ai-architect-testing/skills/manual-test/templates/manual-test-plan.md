@@ -2,16 +2,16 @@
 
 **Version:** 1.0
 **Date:** YYYY-MM-DD
-**Tester:** ********\_********
-**Device / Browser:** ********\_********
-**App Version / Build:** ********\_********
+**Tester:** **\*\*\*\***\_**\*\*\*\***
+**Device / Browser:** **\*\*\*\***\_**\*\*\*\***
+**App Version / Build:** **\*\*\*\***\_**\*\*\*\***
 
 ---
 
 ## Prerequisites
 
 - [ ] App is deployed to test environment
-- [ ] Test user account is available (credentials: ****\_****)
+- [ ] Test user account is available (credentials: \***\*\_\*\***)
 - [ ] Test data is seeded (e.g., sample orders, customers)
 - [ ] Device is connected to required network
 
@@ -67,8 +67,8 @@
 | TC-003    | [Title] | High     | **\_\_\_\_** |
 
 **Overall Result:** ☐ Pass ☐ Fail
-**Tester Signature:** ********\_********
-**Date:** ********\_********
+**Tester Signature:** **\*\*\*\***\_**\*\*\*\***
+**Date:** **\*\*\*\***\_**\*\*\*\***
 
 ---
 

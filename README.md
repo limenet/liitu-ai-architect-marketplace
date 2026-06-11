@@ -37,7 +37,7 @@ Using a marketplace is a two-step process: first add the marketplace catalog, th
 From within Claude Code, run:
 
 ```shell
- /plugin marketplace add https://github.com/liitu-ch/liitu-ai-architect-core
+/plugin marketplace add https://github.com/liitu-ch/liitu-ai-architect-marketplace
 ```
 
 This registers the catalog with Claude Code so you can browse what's available. No plugins are installed yet.
@@ -70,7 +70,7 @@ Team admins can set up automatic marketplace installation by adding this to `.cl
     "liitu-ai-architect-marketplace": {
       "source": {
         "source": "github",
-        "repo": "liitu-ai-architect/liitu-ai-architect-marketplace"
+        "repo": "liitu-ch/liitu-ai-architect-marketplace"
       }
     }
   }
@@ -94,13 +94,6 @@ stack.
 | `/ai-entity-model`     | `/ai-architect-core:entity-model`     | Creates entity models with Mermaid ER diagrams and attribute tables                              |
 | `/ai-use-case-diagram` | `/ai-architect-core:use-case-diagram` | Generates Mermaid use case diagrams from requirements                                            |
 | `/ai-use-case-spec`    | `/ai-architect-core:use-case-spec`    | Creates detailed use case specifications with scenarios and business rules                       |
-| `/ai-hello`            | `/ai-architect-core:hello`            | Greets the user with a personalized message                                                      |
-
-#### MCP Servers
-
-| Server       | Description                          |
-| ------------ | ------------------------------------ |
-| **context7** | General library documentation lookup |
 
 ### ai-architect-testing
 
@@ -115,6 +108,12 @@ automated E2E tests, unit tests (including architecture/layer-boundary checks), 
 | `/ai-playwright-test` | `/ai-architect-testing:playwright-test` | Creates Playwright E2E tests for React views with accessibility-first locators and multi-device coverage  |
 | `/ai-vitest`          | `/ai-architect-testing:vitest`          | Creates Vitest unit tests for domain logic, mappers, components, and architecture/layer-boundary checks   |
 | `/ai-manual-test`     | `/ai-architect-testing:manual-test`     | Creates structured manual test plans with step-by-step test cases for device and browser testing          |
+
+#### MCP Servers
+
+| Server         | Description                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| **playwright** | Browser automation via `@playwright/mcp` — lets Claude drive a real browser when debugging E2E tests |
 
 ### ai-architect-dev-tools
 
@@ -158,8 +157,8 @@ in context so Claude knows what's available, but the full skill content only loa
 You can pass arguments when invoking a skill via either form. For example:
 
 ```shell
-/ai-hello Alex
-/ai-architect-core:hello Alex
+/ai-use-case-spec UC-001
+/ai-architect-core:use-case-spec UC-001
 ```
 
 Arguments are available to the skill via the `$ARGUMENTS` placeholder and get inserted into the skill's instructions.

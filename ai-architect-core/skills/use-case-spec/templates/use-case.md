@@ -2,11 +2,11 @@
 
 ## Overview
 
-**Use Case ID:** UC-XXX   
-**Use Case Name:** [Descriptive Name]   
-**Primary Actor:** [Role]   
-**Goal:** [What the actor wants to achieve]   
-**Status:** Draft | Reviewed | Approved | Implemented | Tested | Done | Obsolete
+**Use Case ID:** UC-XXX  
+**Use Case Name:** [Descriptive Name]  
+**Primary Actor:** [Role]  
+**Goal:** [What the actor wants to achieve]  
+**Status:** Draft | Review | Approved | Implemented | Tested | Done | Obsolete
 
 ## Preconditions
 
@@ -51,7 +51,7 @@
 ### Status Values
 
 | Status      | Description                                      |
-|-------------|--------------------------------------------------|
+| ----------- | ------------------------------------------------ |
 | Draft       | Initial version, still being written.            |
 | Review      | Complete, awaiting stakeholder review.           |
 | Approved    | Reviewed and approved for implementation.        |
@@ -63,7 +63,7 @@
 ### Step Writing Guidelines
 
 | Do                                  | Don't                                         |
-|-------------------------------------|-----------------------------------------------|
+| ----------------------------------- | --------------------------------------------- |
 | "User clicks Save button"           | "User triggers onClick handler"               |
 | "System validates the email format" | "System runs regex /^[\w]+@[\w]+$/"           |
 | "System displays error message"     | "System throws ValidationException"           |

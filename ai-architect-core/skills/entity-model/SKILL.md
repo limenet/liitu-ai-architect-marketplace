@@ -24,7 +24,7 @@ The document contains an ER diagram and attribute tables.
 
 ## Document Structure
 
-```markdown
+````markdown
 # Entity Model
 
 ## Entity Relationship Diagram
@@ -34,13 +34,14 @@ erDiagram
     ROOM_TYPE ||--o{ ROOM : "categorizes"
     GUEST ||--o{ RESERVATION : "makes"
 ```
+````
 
 ### ENTITY_NAME
 
 One sentence describing the entity.
 
 | Attribute | Description | Data Type | Length/Precision | Validation Rules      |
-|-----------|-------------|-----------|------------------|-----------------------|
+| --------- | ----------- | --------- | ---------------- | --------------------- |
 | id        | ...         | Long      | 19               | Primary Key, Sequence |
 | ...       | ...         | ...       | ...              | ...                   |
 
@@ -59,7 +60,7 @@ Every entity MUST have:
 Defines categories of rooms with shared characteristics.
 
 | Attribute   | Description              | Data Type | Length/Precision | Validation Rules          |
-|-------------|--------------------------|-----------|------------------|---------------------------|
+| ----------- | ------------------------ | --------- | ---------------- | ------------------------- |
 | id          | Unique identifier        | Long      | 19               | Primary Key, Sequence     |
 | name        | Name of the room type    | String    | 50               | Not Null, Unique          |
 | description | Detailed description     | String    | 500              | Optional                  |
@@ -77,7 +78,7 @@ Defines categories of rooms with shared characteristics.
 Use these values in the "Validation Rules" column (never leave empty):
 
 | Attribute Type | Validation Rules Value           |
-|----------------|----------------------------------|
+| -------------- | -------------------------------- |
 | Primary key    | Primary Key, Sequence            |
 | Required field | Not Null                         |
 | Unique field   | Not Null, Unique                 |
@@ -90,7 +91,7 @@ Use these values in the "Validation Rules" column (never leave empty):
 ## Data Types Reference
 
 | Data Type | Length/Precision | Usage                 |
-|-----------|------------------|-----------------------|
+| --------- | ---------------- | --------------------- |
 | Long      | 19               | IDs, foreign keys     |
 | String    | varies (50-500)  | Text fields           |
 | Integer   | 10               | Whole numbers         |
@@ -111,14 +112,14 @@ If validation spans multiple columns, add after the table:
 2. Use TodoWrite to create a task for each entity
 3. Write the document header and ER diagram (relationships only)
 4. For each entity:
-    - Write ### heading
-    - Write one sentence description
-    - Write attribute table with 5 columns
-    - Add constraints if needed
-    - Mark todo complete
+   - Write ### heading
+   - Write one sentence description
+   - Write attribute table with 5 columns
+   - Add constraints if needed
+   - Mark todo complete
 5. Validate the document:
-    - Every entity in the ER diagram has a corresponding attribute table section
-    - Every attribute table has exactly 5 columns
-    - No attributes appear inside the Mermaid diagram entity blocks
-    - All foreign keys reference existing entities
-    - All validation rules use values from the Validation Rules Reference
+   - Every entity in the ER diagram has a corresponding attribute table section
+   - Every attribute table has exactly 5 columns
+   - No attributes appear inside the Mermaid diagram entity blocks
+   - All foreign keys reference existing entities
+   - All validation rules use values from the Validation Rules Reference
