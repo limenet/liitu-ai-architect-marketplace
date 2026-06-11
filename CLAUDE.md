@@ -11,8 +11,9 @@ This is a **Claude Code plugin marketplace** called `liitu-ai-architect-marketpl
 - **`ai-architect-testing`** — a testing toolkit with skills for documenting a project-level testing concept,
   creating Playwright E2E tests, Vitest unit tests (including architecture/layer-boundary checks), and manual
   test plans.
-- **`ai-architect-dev-tools`** — developer workflow tools with skills for creating conventional commits and
-  structured use case implementation plans through guided interaction.
+- **`ai-architect-dev-tools`** — developer workflow tools with skills for creating conventional commits,
+  project-level implementation guidelines (UI component reuse, styling rules, conventions), and structured use
+  case implementation plans through guided interaction.
 
 ## Repository Structure
 
@@ -24,7 +25,8 @@ The repo has four layers:
 - **`ai-architect-testing/`** — the testing plugin, containing its own `.claude-plugin/plugin.json`, `skills/`,
   and `commands/` directories
 - **`ai-architect-dev-tools/`** — the dev tools plugin, containing its own `.claude-plugin/plugin.json`,
-  `skills/`, and `commands/` directories
+  `.mcp.json` (context7, used by the `guidelines` skill for library documentation lookup), `skills/`, and
+  `commands/` directories
 
 Each plugin ships both **skills** (`skills/<name>/SKILL.md`) and **slash commands**
 (`commands/ai-<name>.md`). Commands are thin wrappers that delegate to the skill of the same name; they exist
@@ -40,6 +42,8 @@ Skills live in `<plugin>/skills/<skill-name>/SKILL.md`. Some skills have support
 - `ai-architect-testing/skills/playwright-test/templates/example-view.spec.ts` — Playwright E2E test template
 - `ai-architect-testing/skills/vitest/templates/` — Vitest unit test templates (domain logic, components, mappers)
 - `ai-architect-testing/skills/manual-test/templates/manual-test-plan.md` — manual test plan template
+- `ai-architect-dev-tools/skills/guidelines/templates/guidelines.md` — template for the project implementation
+  guidelines (`docs/guidelines.md`), consumed by the `implement-use-case` skill
 
 ## Skill Authoring Conventions
 
@@ -49,7 +53,7 @@ All skills follow these patterns:
   description includes trigger phrases ("Use when the user asks to...") so Claude knows when to auto-invoke.
 - **Workflow**: Skills use TodoWrite for task tracking and follow numbered step-by-step workflows.
 - **Output**: Each skill writes to a specific file in `docs/` (e.g., `docs/requirements.md`,
-  `docs/entity_model.md`, `docs/use_cases.md`, `docs/use_cases/{name}.md`,
+  `docs/entity_model.md`, `docs/use_cases.md`, `docs/use_cases/{name}.md`, `docs/guidelines.md`,
   `docs/implementation/{uc}/plan.md`). The `testing-concept` skill is the exception and writes `TESTING.md` at
   the project root.
 - **Quality checks**: Skills include validation checklists at the end of their workflows.
