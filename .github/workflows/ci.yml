@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate marketplace structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          status=0
+          while IFS= read -r f; do
+            if ! jq empty "$f"; then
+              echo "::error file=$f::Invalid JSON"
+              status=1
+            fi
+          done < <(find . -name '*.json' -not -path './.git/*' -not -path '*/node_modules/*')
+          exit $status
+
+      - name: Check marketplace plugin sources
+        run: |
+          status=0
+          while IFS= read -r src; do
+            if [ ! -f "$src/.claude-plugin/plugin.json" ]; then
+              echo "::error::Plugin source '$src' from marketplace.json has no .claude-plugin/plugin.json"
+              status=1
+            fi
+          done < <(jq -r '.plugins[].source' .claude-plugin/marketplace.json)
+          exit $status
+
+      - name: Check skill/command parity
+        run: |
+          status=0
+          for plugin in ai-architect-core ai-architect-testing ai-architect-dev-tools; do
+            for skill in "$plugin"/skills/*/; do
+              name=$(basename "$skill")
+              if [ ! -f "$plugin/commands/ai-$name.md" ]; then
+                echo "::error::Skill '$plugin/skills/$name' has no matching command '$plugin/commands/ai-$name.md'"
+                status=1
+              fi
+            done
+            for cmd in "$plugin"/commands/ai-*.md; do
+              name=$(basename "$cmd" .md)
+              name=${name#ai-}
+              if [ ! -d "$plugin/skills/$name" ]; then
+                echo "::error::Command '$cmd' has no matching skill '$plugin/skills/$name'"
+                status=1
+              fi
+            done
+          done
+          exit $status
+
+  format:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check formatting
+        run: npx --yes prettier --check .
+
+  typecheck-templates:
+    name: Typecheck test templates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Set up scratch workspace
+        run: |
+          mkdir -p /tmp/tscheck/templates
+          cp ai-architect-testing/skills/playwright-test/templates/*.ts /tmp/tscheck/templates/
+          cp ai-architect-testing/skills/vitest/templates/*.ts* /tmp/tscheck/templates/
+          # jest-dom matchers (toHaveTextContent, ...) are normally registered via
+          # setupFiles; provide the type augmentation explicitly for tsc.
+          printf 'import "@testing-library/jest-dom/vitest";\n' > /tmp/tscheck/jest-dom-types.d.ts
+          cd /tmp/tscheck
+          npm init -y
+          npm install --no-audit --no-fund typescript@5 @playwright/test vitest react @types/react @testing-library/react @testing-library/user-event @testing-library/jest-dom
+      - name: Run tsc
+        run: |
+          cd /tmp/tscheck
+          npx tsc --noEmit --strict --skipLibCheck --jsx react-jsx \
+            --target es2022 --module esnext --moduleResolution bundler \
+            jest-dom-types.d.ts templates/*.ts templates/*.tsx
