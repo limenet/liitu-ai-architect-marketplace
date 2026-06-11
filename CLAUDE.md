@@ -25,7 +25,8 @@ The repo has four layers:
 - **`ai-architect-testing/`** — the testing plugin, containing its own `.claude-plugin/plugin.json`, `skills/`,
   and `commands/` directories
 - **`ai-architect-dev-tools/`** — the dev tools plugin, containing its own `.claude-plugin/plugin.json`,
-  `skills/`, and `commands/` directories
+  `.mcp.json` (context7, used by the `guidelines` skill for library documentation lookup), `skills/`, and
+  `commands/` directories
 
 Each plugin ships both **skills** (`skills/<name>/SKILL.md`) and **slash commands**
 (`commands/ai-<name>.md`). Commands are thin wrappers that delegate to the skill of the same name; they exist
