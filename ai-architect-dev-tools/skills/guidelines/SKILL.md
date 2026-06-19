@@ -76,19 +76,18 @@ Mark this todo done.
 
 ### Step 4: Ask the user about rules not visible in code
 
-Present your scan findings and any deviations from official library recommendations (Step 3) briefly, then ask:
+First, briefly present your scan findings and any deviations from official library recommendations (Step 3) so the user has context.
 
-> Based on my scan, the project uses [summary of findings]. Before I write the guidelines, a few questions:
->
-> **1. When is it acceptable to build a new component instead of reusing an existing one — and where should new components live?**
->
-> **2. Which practices are explicitly forbidden?** (e.g., inline styles, hardcoded colors/spacing, one-off CSS, copying a library component instead of wrapping it)
->
-> **3. Is there a design system or design reference (e.g., Figma, brand guide) the implementation must follow?**
->
-> **4. [Only if Step 3 found deviations]** The project deviates from the official library recommendations in these points: [list]. Should the guidelines enforce the official pattern, or document the project's current practice as the rule?
+Then **use the `AskUserQuestion` tool** to collect the answers — do not ask these as free-form prose in a normal message. Each question below becomes one `AskUserQuestion` question, with concrete options derived from your scan so the user can pick rather than type. Always phrase options grounded in the actual findings (e.g., real component paths, the styling approach you detected), and rely on the tool's built-in "Other" choice for custom answers.
 
-Wait for the user's answers before continuing. If the user skips a question, derive a sensible default from the scan and mark it as such in the document.
+Ask these questions:
+
+1. **Header "New components"** — When is it acceptable to build a new component instead of reusing an existing one, and where should new components live? (Offer options such as: only when no existing component fits / never without approval / freely; combined with the detected components location.)
+2. **Header "Forbidden"** — Which practices are explicitly forbidden? Use `multiSelect: true`. (Offer options such as: inline styles, hardcoded colors/spacing, one-off CSS files, copying a library component instead of wrapping it.)
+3. **Header "Design ref"** — Is there a design system or design reference (e.g., Figma, brand guide) the implementation must follow? (Offer options such as: Figma / brand guide / none.)
+4. **Header "Deviations"** — _Only include this question if Step 3 found deviations._ The project deviates from the official library recommendations in these points: [list]. Should the guidelines enforce the official pattern, or document the project's current practice as the rule? (Options: enforce official pattern / document current practice.)
+
+Send the applicable questions in a single `AskUserQuestion` call (max 4 questions). Wait for the user's answers before continuing. If the user skips a question or chooses an option that implies no constraint, derive a sensible default from the scan and mark it as such in the document.
 
 Mark this todo done.
 
