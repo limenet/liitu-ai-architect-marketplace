@@ -30,22 +30,14 @@ If there are no changes at all (nothing staged, unstaged, or untracked), inform 
 
 ### Step 2: Ask about staging
 
-If there are unstaged or untracked changes, present them to the user and ask:
+If there are unstaged or untracked changes, first show them (Staged / Unstaged / Untracked file lists), then **use the `AskUserQuestion` tool** to ask which files to include (header "Files"). Offer these options:
 
-> I see these changes:
->
-> **Staged:** (list files, or "nothing staged yet")
-> **Unstaged:** (list files)
-> **Untracked:** (list files)
->
-> Which files should I include in this commit? Options:
->
-> 1. All changes (stage everything)
-> 2. Only already staged changes
-> 3. Let me pick specific files
+- **All changes** — stage everything
+- **Only staged** — commit only what is already staged
+- **Pick specific files** — let the user choose individual files
 
-Wait for the user's answer. If they pick option 3, show the file list and let them specify
-which files to include. Stage the selected files with `git add`.
+Wait for the user's answer. If they pick "Pick specific files", show the file list and let them specify
+which files to include (the tool's "Other" choice accepts a free-form list). Stage the selected files with `git add`.
 
 If everything is already staged and there are no unstaged/untracked changes, skip this step.
 
@@ -53,34 +45,30 @@ If everything is already staged and there are no unstaged/untracked changes, ski
 
 Read the final staged diff (`git diff --staged`) to understand what the changes actually do.
 
-Then ask the user:
+Then **use the `AskUserQuestion` tool** to determine the commit type (header "Type"). List the most likely type first and label it "(Recommended)" based on your diff analysis. The conventional types are:
 
-> What type of change is this?
->
-> - **feat** — a new feature
-> - **fix** — a bug fix
-> - **refactor** — code restructuring without behavior change
-> - **docs** — documentation only
-> - **test** — adding or updating tests
-> - **chore** — maintenance (dependencies, config, CI)
-> - **style** — formatting, whitespace, semicolons
-> - **perf** — performance improvement
-> - **build** — build system or external dependencies
-> - **ci** — CI/CD configuration
+- **feat** — a new feature
+- **fix** — a bug fix
+- **refactor** — code restructuring without behavior change
+- **docs** — documentation only
+- **test** — adding or updating tests
+- **chore** — maintenance (dependencies, config, CI)
+- **style** — formatting, whitespace, semicolons
+- **perf** — performance improvement
+- **build** — build system or external dependencies
+- **ci** — CI/CD configuration
 
-Suggest the most likely type based on the diff, but let the user decide.
+`AskUserQuestion` allows at most four options per question, so present the recommended type plus the next three most plausible ones for this diff; the user can use the "Other" choice to select any remaining type.
 
 ### Step 4: Ask about scope and breaking changes
 
-Ask two follow-up questions:
+**Use the `AskUserQuestion` tool** to ask both follow-ups in a single call (two questions):
 
-> **Scope** (optional): Which area of the codebase does this affect?
-> Examples: auth, api, ui, db — or leave empty for no scope.
->
-> **Breaking change?** Does this commit introduce a breaking change? (yes/no)
+1. **Header "Scope"** — Which area of the codebase does this affect? Derive concrete options from the staged file paths (e.g., `auth`, `api`, `ui`, `db`) and always include a "No scope" option. The user can type a custom scope via "Other".
+2. **Header "Breaking"** — Does this commit introduce a breaking change? Options: **No** and **Yes**.
 
-If the user confirms a breaking change, the commit type gets a `!` suffix and a
-`BREAKING CHANGE:` footer will be added. Ask for a short description of what breaks.
+If the user selects a breaking change, the commit type gets a `!` suffix and a
+`BREAKING CHANGE:` footer will be added — then ask (free-form) for a short description of what breaks.
 
 ### Step 5: Generate the commit message
 

@@ -62,7 +62,7 @@ For each of the three test levels (manual, E2E, unit), write three subsections:
 2. Find test commands in `package.json`
 3. Check `playwright.config.ts` for browser/device configuration and test server setup
 4. Identify key domain classes, mappers, and architecture layers from the source tree
-5. Ask the user for manual testing scope (real devices, user journeys, release cadence)
+5. Ask the user for manual testing scope. Use the `AskUserQuestion` tool for the parts that have discrete choices — header "Devices" (multiSelect: true; offer the relevant platforms/devices, e.g. iOS, Android, Desktop browsers) and header "Cadence" (release/test frequency, e.g. per sprint, per release, before each deploy). Ask for the key user journeys as a free-form follow-up, since those are open-ended.
 6. Fill in all project-specific details — write in the team's language
 7. Write to `TESTING.md`
 
