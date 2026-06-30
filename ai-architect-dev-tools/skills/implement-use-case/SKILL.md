@@ -40,7 +40,7 @@ Use TodoWrite to create tasks for each remaining step:
 
 ### Step 2: Read source artifacts
 
-Read these four documents. If any is missing, note it — the plan will flag it, but do not stop unless the use case spec itself is absent.
+Read these five documents. If any is missing, note it — the plan will flag it, but do not stop unless the use case spec itself is absent.
 
 1. `docs/use_cases/$ARGUMENTS.md` — **required.** UC ID, primary actor, goal, preconditions, main success scenario, alternative flows, postconditions, business rules (BR-XXX). If this file does not exist, stop and tell the user: "`docs/use_cases/$ARGUMENTS.md` not found. Please create the use case spec first using the `use-case-spec` skill."
 2. `docs/requirements.md` — requirements catalog (FR-XXX, NFR-XXX, C-XXX tables). Note if absent.
