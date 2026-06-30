@@ -122,11 +122,11 @@ guidelines and planning a use case to crafting a conventional commit — through
 
 #### Skills & Commands
 
-| Command                  | Skill                                        | Description                                                                                                                                                 |
-| ------------------------ | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/ai-guidelines`         | `/ai-architect-dev-tools:guidelines`         | Creates a binding `docs/guidelines.md` documenting UI component reuse, styling rules, and conventions, validated against official library docs via Context7 |
-| `/ai-implement-use-case` | `/ai-architect-dev-tools:implement-use-case` | Creates a structured implementation plan for a use case with traceability, guidelines, and ordered tasks                                                    |
-| `/ai-commit`             | `/ai-architect-dev-tools:commit`             | Creates conventional commits by analyzing changes, asking about type/scope, and generating messages                                                         |
+| Command                  | Skill                                        | Description                                                                                                                                                         |
+| ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/ai-guidelines`         | `/ai-architect-dev-tools:guidelines`         | Creates a binding `docs/guidelines/` directory documenting UI component reuse, styling rules, and conventions, validated against official library docs via Context7 |
+| `/ai-implement-use-case` | `/ai-architect-dev-tools:implement-use-case` | Creates a structured implementation plan for a use case with traceability, guidelines, and ordered tasks                                                            |
+| `/ai-commit`             | `/ai-architect-dev-tools:commit`             | Creates conventional commits by analyzing changes, asking about type/scope, and generating messages                                                                 |
 
 #### MCP Servers
 

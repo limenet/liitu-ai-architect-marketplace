@@ -1,8 +1,9 @@
 ---
 name: guidelines
 description: >
-  Creates a project-level implementation guidelines document at
-  docs/guidelines.md by scanning the codebase for the UI component library,
+  Creates a project-level implementation guidelines directory at
+  docs/guidelines/ (one file per chapter plus a README index) by scanning the
+  codebase for the UI component library,
   styling approach, project structure, and naming conventions, validating the
   libraries found in package.json against their official documentation via the
   Context7 MCP server, then asking the user about rules that are not visible
@@ -17,13 +18,13 @@ description: >
 
 # Implementation Guidelines Document
 
-Create a `docs/guidelines.md` that documents how code — especially UI — must be implemented in this project: which component library and existing project components to reuse, how styling is done, where new files belong, and which conventions apply.
+Create a `docs/guidelines/` directory — one kebab-case file per chapter plus a `README.md` index — that documents how code — especially UI — must be implemented in this project: which component library and existing project components to reuse, how styling is done, where new files belong, and which conventions apply.
 
 This document is a **binding rule set**, not a tutorial. Other skills (notably `implement-use-case`) read it and carry its rules into implementation plans, so implementations reuse existing components instead of inventing new ones or adding custom styling.
 
 ## Output
 
-Write to `docs/guidelines.md`.
+Write each chapter as its own kebab-case file in `docs/guidelines/`, with `docs/guidelines/README.md` as the index.
 
 ## DO NOT
 
@@ -42,7 +43,7 @@ Use TodoWrite to create tasks for each remaining step:
 - Scan codebase for conventions
 - Check library best practices via Context7
 - Ask user about rules not visible in code
-- Write guidelines to `docs/guidelines.md`
+- Write guidelines to `docs/guidelines/`
 - Quality check
 
 ### Step 2: Scan the codebase
@@ -93,7 +94,7 @@ Mark this todo done.
 
 ### Step 5: Write the guidelines
 
-Create `docs/guidelines.md` using [templates/guidelines.md](templates/guidelines.md) as the starting point. Fill every placeholder with project-specific content from Steps 2–4, including the library-specific rules derived via Context7. Write in the team's working language.
+Create the `docs/guidelines/` directory using [templates/guidelines/](templates/guidelines/) as the starting point: write one file per chapter (`ui-components.md`, `styling.md`, `library-specific-rules.md`, `project-structure.md`, `naming-conventions.md`, `state-and-data-access.md`, `compliance-checklist.md`) plus a `README.md` index linking them. Fill every placeholder with project-specific content from Steps 2–4, including the library-specific rules derived via Context7. Write in the team's working language.
 
 Mark this todo done.
 
@@ -108,7 +109,7 @@ Verify before finishing:
 - [ ] The "reuse before build" rule states where new components belong when one is genuinely needed
 - [ ] Forbidden practices are listed concretely (no vague "write clean code" statements)
 - [ ] No placeholder text remains
-- [ ] Document was written to `docs/guidelines.md`
+- [ ] Guidelines were written to `docs/guidelines/` — one file per chapter plus a `README.md` index
 - [ ] All TodoWrite tasks are marked done
 
 Fix any failing check before finishing.

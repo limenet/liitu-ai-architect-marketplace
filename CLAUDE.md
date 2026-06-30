@@ -43,8 +43,8 @@ Skills live in `<plugin>/skills/<skill-name>/SKILL.md`. Some skills have support
 - `ai-architect-testing/skills/playwright-test/templates/example-view.spec.ts` — Playwright E2E test template
 - `ai-architect-testing/skills/vitest/templates/` — Vitest unit test templates (domain logic, components, mappers)
 - `ai-architect-testing/skills/manual-test/templates/manual-test-plan.md` — manual test plan template
-- `ai-architect-dev-tools/skills/guidelines/templates/guidelines.md` — template for the project implementation
-  guidelines (`docs/guidelines.md`), consumed by the `implement-use-case` skill
+- `ai-architect-dev-tools/skills/guidelines/templates/guidelines/` — per-chapter templates for the project
+  implementation guidelines (`docs/guidelines/`), consumed by the `implement-use-case` skill
 
 ## Skill Authoring Conventions
 
@@ -54,7 +54,7 @@ All skills follow these patterns:
   description includes trigger phrases ("Use when the user asks to...") so Claude knows when to auto-invoke.
 - **Workflow**: Skills use TodoWrite for task tracking and follow numbered step-by-step workflows.
 - **Output**: Each skill writes to a specific file in `docs/` (e.g., `docs/requirements.md`,
-  `docs/entity_model.md`, `docs/use_cases.md`, `docs/use_cases/{name}.md`, `docs/guidelines.md`,
+  `docs/entity_model.md`, `docs/use_cases.md`, `docs/use_cases/{name}.md`, `docs/guidelines/`,
   `docs/implementation/{uc}/plan.md`, `docs/test-plans/{feature-name}.md`). The `testing-concept` skill is the
   exception and writes `TESTING.md` at the project root.
 - **Quality checks**: Skills include validation checklists at the end of their workflows.
